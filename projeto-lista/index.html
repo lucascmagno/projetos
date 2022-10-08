@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h2>TODA LISTA</h2>
+        <h3>Add Item</h3>
+        <p>
+            <input id="new-task" type="text"><button onclick="addTask()">Add</button>
+        </p>
+        <h3>TUDO</h3>
+        <ul id="incomplete-tasks">
+        
+        </ul>
+        <h3>Completadas</h3>
+        <ul id="completed-tasks">
+            <li><input type="checkbox" checked> <label>Consultar o médico</label><input type="text"><button class="edit">Editar</button><button class="delete">Deletar</button>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>
