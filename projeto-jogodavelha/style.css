@@ -2,16 +2,20 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600&display=swap');
 
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+
 *{
     margin: 0;
     padding: 0;
     outline: 0;
     
-}
-main{
-    width: 500px;
-    height: 100vh;
-    margin: auto;
 }
 
 body {
@@ -67,7 +71,7 @@ table tr th:last-child {
     font-size: 40px;
 }
 #details {
-    diplay: flex;
+    display: flex;
     flex-wrap: wrap;
 }
 #accordion {
