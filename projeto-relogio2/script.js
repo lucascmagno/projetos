@@ -3,7 +3,7 @@ const minutesHand = document.querySelector('.hand.minutes')
 const secondsHand = document.querySelector('.hand.seconds')
 
 const setRotation = (element, rotationPercentage) =>{
-    element.style.setProperty('--rotation',rotationPercentage + 360);
+    element.style.setProperty('--rotation',rotationPercentage * 360);
 }
 
 const setClock = () => {

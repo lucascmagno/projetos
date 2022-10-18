@@ -97,7 +97,7 @@ body{
     height: 40%;
     background-color: black;
     z-index: 10;
-    transform: translateX(-50%) rotate(calc(var(--rotation)*10deg));
+    transform: translateX(-50%) rotate(calc(var(--rotation)*1deg));
     transform-origin: bottom;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
