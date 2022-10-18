@@ -82,8 +82,9 @@ body{
     top: 50%;
     left: 50%;
     z-index: 11;
-    background-color: black;
     transform: translate(-50%, -50%);
+    background-color: black;
+    /*transform: translate(-50%, -50%);*/
 }
 
 .clock .hand{
@@ -96,7 +97,7 @@ body{
     height: 40%;
     background-color: black;
     z-index: 10;
-    transform: translateX(-50%) rotate(var(var(--rotation)* 1deg));
+    transform: translateX(-50%) rotate(calc(var(--rotation)*10deg));
     transform-origin: bottom;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
