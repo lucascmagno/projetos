@@ -14,6 +14,7 @@ function twoDigits(digit){
 function start(){
     counter()
     interval = setInterval(counter, 1000)
+    let elemt =document.getElementsByClass('start-btn').setAttribute("disabled","disable")
 }
 
 function pause(){
