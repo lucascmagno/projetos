@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="stylesheet" href="../Styles/form.css">
+    <style>
+        /*fieldset{
+            width: 600px;
+            margin: auto;
+            background-color: rgba(17, 207, 255, 0.151);
+            box-shadow: 1px 1px 3px rgba(17, 207, 255, 0.351);
+        }
+        legend{
+            text-align: center;
+            font-size: 1.7em;
+            font-weight: bold;
+        }
+        .botao{
+            border: none;
+            padding: 10px;
+            background-color: white;
+            border-radius: 15px;
+            width: 100px;
+            margin-right: 25px;
+        }
+        .botao:hover{
+            background-color: rgba(0, 255, 255, 0.041);
+            border: 1px solid black;
+            transform: translate(-2px, -2px);
+        }
+        */
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <legend>Login</legend>
+        <form action="" autocomplete="on" method="get">
+                <div class="user-box">
+                    <input type="text" name="nome" id="inome" maxlength="30" minlength="2" autocomplete="name" required>
+                    <label for="inome">Usuário: </label>
+                </div>
+                <div class="user-box">
+                    <input type="password" name="senha" id="isenha" minlength="8" maxlength="15" autocomplete="current-password" required>
+                    <label for="isenha">Senha: </label>
+                </div>
+                <div class="submit">
+                    <a href="#">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Enviar
+                    </a>
+                </div>
+        </form>
+    </div>
+</body>
+</html>
