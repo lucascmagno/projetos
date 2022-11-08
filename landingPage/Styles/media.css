@@ -1,4 +1,4 @@
-@media screen and (max-width: 760px){
+@media screen and (max-width: 760px){/*celular*/
     /*Quando o site atingir a largura máxima de 760px*/
     header{
         flex-direction: column;
@@ -22,4 +22,30 @@
     ul{
         text-align: center;
     }
+}
+/*Todas as demais mídias*/
+/*Typical Device BreakPoints0
+Pequenas telas: até 600px
+Celular: Até 600px até 768px
+Tablet: 768px até 992px
+Desktop: 992px até 1200px
+Grandes telas: Acima de 1200px
+*/
+
+@media print{ /*Impressão*/
+    
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {/*Tablet*/
+   h2{
+    font-size: 38px;
+   }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px){/*Desktop*/
+
+}
+
+@media screen and (min-width: 1200px){/*Telas grandes */
+   
 }
