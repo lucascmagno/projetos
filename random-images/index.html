@@ -9,6 +9,10 @@
             background-color: #000;
             color: #00FF00;
             font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
         }
 
         input[type="text"], input[type="submit"] {
@@ -42,21 +46,25 @@
     </style>
 </head>
 <body>
-    <input type="text" id="pesquisa">
-    <input type="submit" id="botaoPesquisar" value="Pesquisar">
+    <div>
+        <label for="pesquisa">Pesquise uma imagem aleatória</label>
+        <input type="text" id="pesquisa">
+        <input onclick="pesquisarImagem()" type="submit" id="botaoPesquisar" value="Pesquisar">
+    </div>
 
     <div id="resultado"></div>
-    <script>
-        const botaoPesquisar = document.querySelector('#botaoPesquisar');
-        const resultado = document.querySelector('#resultado');
+    <script defer>
+        function pesquisarImagem(){
+            const botaoPesquisar = document.querySelector('#botaoPesquisar');
+            const resultado = document.querySelector('#resultado');
 
-        botaoPesquisar = addEventListener('click', function(){
-            const pesquisa = document.querySelector('#pesquisa').value;
-            const url = `https://source.unsplash.com/1600x900/?${pesquisa}`;
+            botaoPesquisar = addEventListener('click', function(){
+                const pesquisa = document.querySelector('#pesquisa').value;
+                const url = `https://source.unsplash.com/800x450/?${pesquisa}`;
 
-            resultado.innerHTML = `<img src="${url}" alt="${pesquisa}">`;
-        });
-
+                resultado.innerHTML = `<img src="${url}" alt="${pesquisa}">`;
+            });
+        }
     </script>
 </body>
 </html>
