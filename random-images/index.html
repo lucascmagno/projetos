@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Images</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #00FF00;
+            font-family: Arial, sans-serif;
+        }
+
+        input[type="text"], input[type="submit"] {
+            padding: 10px;
+            margin: 10px;
+            border: 2px solid #00FF00;
+            background-color: #000;
+            color: #00FF00;
+        }
+
+        #resultado {
+            margin: 20px;
+        }
+
+        #resultado img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        #botaoPesquisar {
+            background-color: #00FF00;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #botaoPesquisar:hover {
+            background-color: #008000;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="pesquisa">
+    <input type="submit" id="botaoPesquisar" value="Pesquisar">
+
+    <div id="resultado"></div>
+    <script>
+        const botaoPesquisar = document.querySelector('#botaoPesquisar');
+        const resultado = document.querySelector('#resultado');
+
+        botaoPesquisar = addEventListener('click', function(){
+            const pesquisa = document.querySelector('#pesquisa').value;
+            const url = `https://source.unsplash.com/1600x900/?${pesquisa}`;
+
+            resultado.innerHTML = `<img src="${url}" alt="${pesquisa}">`;
+        });
+
+    </script>
+</body>
+</html>
