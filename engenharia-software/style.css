@@ -16,6 +16,8 @@ header {
     font-size: 24px;
     font-weight: bold;
 }
+.logo > image{
+}
 
 /* Estilos para a lista de links */
 .ul-link {
