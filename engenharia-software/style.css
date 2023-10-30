@@ -1,9 +1,11 @@
 @charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 /*body*/
 body{
     margin: 0;
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 /*header*/
@@ -11,7 +13,7 @@ header {
     color: #fff;
     padding: 20px;
     text-align: center;
-    background: #333;
+    background: #004869;
 }
 
 /*logo*/
@@ -53,6 +55,36 @@ h1{
     text-align: center;
 }
 
+p, article > ul > li, article > ol > li{
+    font-size: 1.2em;
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: 30px;
+    padding: 0;
+}
+
+h2{
+    font-size: 30px;
+    font-weight: 700;
+    margin: 0;
+    margin-bottom: 30px;
+    padding: 0;
+}
+
+/*article*/
+article{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+}
+/*paragrafos*/
+
+p{
+    text-align: justify;
+}
+
 /*section*/
 section{
     display: flex;
@@ -86,5 +118,6 @@ footer{
     header {
         padding: 10px;
     }
+
 }
 
