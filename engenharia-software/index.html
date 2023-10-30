@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Engenharia de Software</title>
     <link rel="stylesheet" href="./style.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <header>
@@ -13,11 +14,16 @@
                 logo
             </div>
             <ul class="ul-link">
-                <li><a class="link" href="#">LInk1</a></li>
-                <li><a class="link" href="#">LInk2</a></li>
-                <li><a class="link"href="#">LInk3</a></li>
-                <li><a class="link" href="#">LInk4</a></li>
+                <li><a class="link" href="#o-que-e">O que é?</a></li>
+                <li><a class="link" href="#com-o-que-trabalha">Com o que trabalha?</a></li>
+                <li><a class="link" href="#quanto-ganha">Quanto ganha?</a></li>
+                <li><a class="link" href="#onde-atua">Onde atua?</a></li>
             </ul>
+            <div class="menu-toggle" id="menu-toggle">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
         </nav>
     </header>
 
@@ -26,7 +32,7 @@
         <img class="image-principal" >
         
         <article>
-            <h2>O que é um Desenvolvedor de Software?
+            <h2 id="o-que-e">O que é um Desenvolvedor de Software?
             </h2>
 
             <p>
@@ -34,9 +40,9 @@
             </p>
         </article>
         <article>
-            <h2>Com o que Trabalha?</h2>
+            <h2 id="com-o-que-trabalha">Com o que Trabalha?</h2>
             <p>Um engenheiro de software é responsável por projetar, desenvolver, testar e manter softwares e sistemas de computador. Eles aplicam princípios de engenharia e ciência da computação para desenvolver soluções de software que atendam aos requisitos do cliente e dos usuários finais. Algumas das tarefas comuns de um engenheiro de software incluem:</p>
-            <ul>
+            <ul class="ul-container">
                 <li>Analisar requisitos do usuário e do cliente para projetar soluções de software</li>
                 <li>Escrever código limpo, eficiente e bem documentado para implementar soluções de software</li>
                 <li>Testar e depurar software para garantir que ele esteja funcionando corretamente</li>
@@ -47,7 +53,7 @@
             <p>Além disso, os engenheiros de software geralmente têm conhecimento em várias linguagens de programação, sistemas operacionais, bancos de dados e ferramentas de desenvolvimento de software. Eles também podem se especializar em áreas específicas, como desenvolvimento de aplicativos móveis, inteligência artificial ou segurança cibernética.</p>
         </article>
         <article>
-            <h2>Quanto Ganha?</h2>
+            <h2 id="quanto-ganha">Quanto Ganha?</h2>
             <p>O salário de um engenheiro de software varia muito, dependendo de sua localização geográfica, experiência, habilidades, indústria e empresa em que trabalha. Em geral, o salário de um engenheiro de software é considerado muito competitivo em relação a outras profissões e muitas vezes é influenciado por fatores como a demanda por suas habilidades e experiência.</p>
             
             <p>De acordo com dados do site Glassdoor, a média salarial para um engenheiro de software nos Estados Unidos é de aproximadamente US$ 95.000 por ano, mas pode variar de US$ 65.000 a mais de US$ 130.000 por ano. No Brasil, a média salarial de um engenheiro de software é de cerca de R$ 6.000 a R$ 8.000 por mês, dependendo da região e da empresa em que trabalha.</p>
@@ -56,7 +62,7 @@
         </article>
 
         <article>
-            <h2>Onde Atua?</h2>
+            <h2 id="onde-atua">Onde Atua?</h2>
             <p>Um engenheiro de software pode atuar em diversas áreas, dependendo de seus interesses, habilidades e experiência. Algumas das áreas mais comuns incluem:</p>
 
             <ol>
@@ -72,8 +78,32 @@
         </article>
     </section>
     <footer>
-        <p>Desenvolvido por: Lucas Chagas Magno</p>
+        <p>  &copy; <span id="currentYear"></span> Lucas Chagas Magno</p>
         <p>Contato: (91) 90000-0000</p>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        // Encontre o elemento com o id "currentYear"
+        const currentYearElement = document.getElementById("currentYear");
+
+        // Obtenha o ano atual
+        const currentYear = new Date().getFullYear();
+
+        // Atualize o conteúdo do elemento com o ano atual
+        currentYearElement.textContent = currentYear;
+        });
+
+    </script>
+
+<script>
+    // JavaScript para tornar o menu responsivo
+    const menuToggle = document.getElementById("menu-toggle");
+    const ulLink = document.querySelector(".ul-link");
+
+    menuToggle.addEventListener("click", () => {
+        ulLink.classList.toggle("show-menu");
+    });
+</script>
 </body>
 </html>
