@@ -1,9 +1,7 @@
 @charset "utf-8";
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-*{
-    border: 1px solid black;
-}
+
 /* Estilos para o cabeçalho */
 header {
     background-color: #004869;
@@ -11,7 +9,7 @@ header {
     padding: 20px;
     display: flex;
     justify-content: space-between;
-    
+    align-items: center;
 }
 
 /* Estilos para o logo */
@@ -40,21 +38,6 @@ header {
     font-size: 1.4em;
 }
 
-/* Estilos para o botão de alternar o menu */
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-}
-
-.bar {
-    width: 30px;
-    height: 3px;
-    background-color: #fff;
-    margin: 4px 0;
-}
-
-
 
 /*body*/
 body{
@@ -62,15 +45,28 @@ body{
     padding: 0;
     font-family: Arial, Helvetica, sans-serif;
     font-family: 'Roboto', sans-serif;
-    background-color: #0048691a;
+    
 }
 
 /*header*/
 header {
+    width: 98%;
     color: #fff;
     padding: 20px;
     text-align: center;
     background: #004869;
+    display: block;
+    position: fixed;
+}
+
+/*nav link*/
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    position: sticky;
+    padding-right: 100px;
 }
 
 /*logo*/
@@ -90,13 +86,6 @@ ul.ul-link{
     list-style-type: none;
 }
 
-/*nav link*/
-nav{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-}
 
 /*link nav*/
 a.link{
@@ -104,7 +93,7 @@ a.link{
     text-decoration: none;
 }
 a.link:hover{
-    color: #fff;
+    color: #bcb4b4b3;
     text-decoration: underline;
 }
 
@@ -162,6 +151,7 @@ section{
     align-items: center;
     flex-direction: column;
     padding: 20px;
+    padding-top: 200px;
 }
 /*image principal do section*/
 .image-principal{
@@ -187,12 +177,30 @@ footer{
 @media (max-width: 767px) {
     header {
         padding: 10px;
+        height: 100px;
+        align-items: center;
+    }
+    nav{
+        
     }
     
 }
 
 /* Estilos para o menu em dispositivos pequenos */
 @media (max-width: 768px) {
+    .logo{
+        display: none;
+    }
+    .logo > img{
+        display: none;
+    }
+    nav{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 30px;
+    }
     .ul-link {
         display: none;
         flex-direction: column;
@@ -204,11 +212,4 @@ footer{
         width: 100%;
     }
 
-    .ul-link.show-menu {
-        display: flex;
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
 }
