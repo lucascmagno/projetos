@@ -162,7 +162,7 @@ footer a {
 
 @media (max-width: 768px) {
     nav ul {
-        display: none
+        
         /* Ocultar o menu na tela pequena */
     }
     nav ul.active {
@@ -179,6 +179,14 @@ footer a {
         width: 60%;
         height: 300px;
     }
+
+    .a-logo{
+        display: none;
+    }
+
+    #sobre h1{
+        padding-top: 100px;
+    }
 }
 
 
@@ -193,7 +201,6 @@ footer a {
         margin: 0 10px;
     }
     header {
-        background-image: url('seu-fundo-imagem.jpg');
         background-size: cover;
         text-align: center;
     }
