@@ -157,7 +157,7 @@ section{
 /*image principal do section*/
 .image-principal{
     width: 100%;
-    height: 500px;
+    height: 60vh;
     background: url("https://lucascmagno.github.io/projetos/images/logo-engenhariadesoftware.svg") no-repeat center;
     background-size: cover;
     margin-bottom: 20px;

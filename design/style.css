@@ -1,0 +1,165 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f0ff;
+    /* Azul claro de fundo */
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    width: 100%;
+    background-color: #0077b6;
+    /* Azul escuro para a barra de navegação */
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    position: sticky;
+}
+
+.ul-link {
+    list-style-type: none;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    margin: 0 20px;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    background-size: cover;
+    text-align: center;
+    color: white;
+    padding: 0;
+    position: fixed;
+    z-index: 11;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+p {
+    font-size: 18px;
+}
+
+section {
+    padding: 40px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+    color: #0077b6;
+    /* Azul escuro para títulos */
+}
+
+section div {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container-image-responsive {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.img-content>img {
+    border-radius: 30px;
+    width: 60%;
+}
+
+.content {
+    display: flex;
+    height: 400px;
+    gap: 15px;
+    filter: drop-shadow(16px 16px 16px #14141442);
+    border-radius: 30px;
+}
+
+.content>img {
+    border-radius: 30px;
+}
+
+.content-image-responsive>img {
+    max-width: 100%;
+    height: 100%;
+}
+
+a.more-link {
+    color: #0077b6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+section#sobre {
+    padding-top: 100px;
+}
+
+.icons-contato>img {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+}
+
+footer {
+    background-color: #0077b6;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer a {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Estilos para telas pequenas (até 768px) */
+
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        /* Ocultar o menu na tela pequena */
+    }
+    nav ul.active {
+        display: block;
+        /* Mostrar o menu quando ativo */
+    }
+    nav a {
+        display: block;
+        padding: 10px;
+        text-align: center;
+    }
+}
+
+
+/* Estilos para telas maiores (acima de 768px) */
+
+@media (min-width: 769px) {
+    nav ul {
+        display: flex;
+        /* Exibir o menu como lista horizontal */
+    }
+    nav li {
+        margin: 0 10px;
+    }
+    header {
+        background-image: url('seu-fundo-imagem.jpg');
+        background-size: cover;
+        text-align: center;
+    }
+}
