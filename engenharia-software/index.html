@@ -6,6 +6,7 @@
     <title>Engenharia de Software</title>
     <link rel="stylesheet" href="./style.css">
     <script src="script.js" defer></script>
+
 </head>
 <body>
     <header>
@@ -86,6 +87,22 @@
             </ol>
         </article>
     </section>
+
+    <div class="comments">
+        <button class="tab-button" id="openTab">Abrir Comentários</button>
+        <div class="comment-tab" id="commentTab">
+            <button class="tab-button" id="closeTab">Fechar</button>
+            <h2>Comentários</h2>
+            <div class="comment-list" id="commentList">
+                <!-- Aqui serão exibidos os comentários -->
+            </div>
+            <div class="comment-form">
+                <textarea id="commentText" placeholder="Adicione um comentário"></textarea>
+                <button id="addComment">Adicionar Comentário</button>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>  &copy; <span id="currentYear"></span> Lucas Chagas Magno</p>
         <p>Contato: (91) 90000-0000</p>
@@ -112,6 +129,37 @@
 
     menuToggle.addEventListener("click", () => {
         ulLink.classList.toggle("show-menu");
+    });
+</script>
+
+<script>
+        // JavaScript para a aba de comentários
+    const openTabButton = document.getElementById("openTab");
+    const closeTabButton = document.getElementById("closeTab");
+    const commentTab = document.getElementById("commentTab");
+    const commentText = document.getElementById("commentText");
+    const commentList = document.getElementById("commentList");
+    const addCommentButton = document.getElementById("addComment");
+
+    openTabButton.addEventListener("click", () => {
+        commentTab.style.display = "block";
+        openTabButton.style.display = "none";
+    });
+
+    closeTabButton.addEventListener("click", () => {
+        commentTab.style.display = "none";
+        openTabButton.style.display = "block";
+    });
+
+    addCommentButton.addEventListener("click", () => {
+        const text = commentText.value.trim();
+        if (text !== "") {
+            const comment = document.createElement("div");
+            comment.classList.add("comment");
+            comment.textContent = text;
+            commentList.appendChild(comment);
+            commentText.value = "";
+        }
     });
 </script>
 </body>

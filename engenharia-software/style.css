@@ -57,6 +57,7 @@ header {
     background: #004869;
     display: block;
     position: fixed;
+    z-index: 10;
 }
 
 /*nav link*/
@@ -151,7 +152,7 @@ section{
     align-items: center;
     flex-direction: column;
     padding: 20px;
-    padding-top: 200px;
+    padding-top: 170px;
 }
 /*image principal do section*/
 .image-principal{
@@ -189,6 +190,80 @@ section{
     height: 100%;
     border-radius: 30px;
 }
+/*aba de comentarios*/
+.comments {
+    position: relative;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tab-button, #closeTab {
+    background: #004869;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+}
+
+.comment-tab {
+    display: none;
+    background: #fff;
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    margin: 0 auto;
+    width: 60%;
+    max-width: 800px;
+}
+
+h2 {
+    color: #004869;
+}
+
+.comment-form {
+    text-align: center;
+    margin-top: 20px;
+}
+
+textarea {
+    width: 98%;
+    max-width: 98%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+/*botao adicionar comentario*/
+#addComment {
+    background: #004869;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#addComment:hover {
+    background: #003b58;
+}
+
+
+/* Estilos para a lista de comentários */
+.comment {
+    background: #f2f2f2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
 /*footer*/
 footer{
     display: flex;
@@ -230,7 +305,7 @@ footer{
         height: 100px;
     }
     .ul-link {
-        display: none;
+        display: flex;
         flex-direction: column;
         align-items: center;
         background-color: #004869;
