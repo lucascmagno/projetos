@@ -58,7 +58,7 @@ h1 {
     text-align: center;
 }
 
-h2 {
+h2, h3 {
     font-size: 24px;
     color: #0077b6;
     /* Azul escuro para títulos */
@@ -98,6 +98,10 @@ section div {
     max-width: 100%;
     height: 100%;
 }
+#desenhos{
+    width: 80%;
+    margin: auto;
+}
 
 a.more-link {
     color: #0077b6;
@@ -108,18 +112,44 @@ a.more-link {
 section#sobre {
     padding-top: 100px;
 }
+.icons-contato{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    align-items: center;
+    gap: 30px;;
+    margin-top: 50px;
 
-.icons-contato>img {
+}
+
+.icons-contato a{
+    display: flex;
+    gap: 30px;
+    text-decoration: none;
+    font-size: 1.4em;
+    color: #fff;
+}
+
+.icons-contato a:hover{
+    color: #21adf888;
+}
+
+.icons-contato img {
     width: 75px;
     height: 75px;
     border-radius: 50%;
 }
 
 footer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
     background-color: #0077b6;
     color: white;
-    text-align: center;
     padding: 10px 0;
+    text-align: center;
 }
 
 footer a {
@@ -132,7 +162,7 @@ footer a {
 
 @media (max-width: 768px) {
     nav ul {
-        display: none;
+        display: none
         /* Ocultar o menu na tela pequena */
     }
     nav ul.active {
@@ -143,6 +173,11 @@ footer a {
         display: block;
         padding: 10px;
         text-align: center;
+    }
+
+    section > #desenhos{
+        width: 60%;
+        height: 300px;
     }
 }
 
