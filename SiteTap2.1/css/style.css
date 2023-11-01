@@ -60,10 +60,11 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url("../img/pc2.jpg");
+    background-image: url("https://rick-05.github.io/siteTap2/SiteTap2/img/pc2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-attachment: fixed;
     color: #FFFFFF;
     text-align: center;
     padding: 20px;
@@ -109,16 +110,19 @@ header p {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 30px;
+    padding: 30px 0;
 }
 
 #servicos > div {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     text-align: center;
     margin-top: 30px;
     border-radius: 10px;
+}
+h2{
+    text-align: center;
 }
 
 .img {
@@ -128,7 +132,7 @@ header p {
 }
 
 #container {
-    width: 50%;
+    width: 80%;
     margin: auto;
     display: flex;
     flex-direction: row;
@@ -148,12 +152,14 @@ header p {
 }
 
 .projetos-content{
-    width: 250px;
+    width: 70%;
     height: 250px;
     display: flex;
     align-items: center;
     flex-direction: column;
     padding-top: 0;
+    border-radius: 10px;
+    padding: 10px;
 }
 
 .projetos-content > a{
@@ -172,6 +178,23 @@ header p {
 
 #contato h2 {
     color: #000000;
+}
+
+.icon-contato{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.icon-contato a{
+    text-decoration: none;
+    font-size: 1.3em;
+}
+
+.icon-contato a:hover{
+    color: #00a3ff;
 }
 
 footer {
@@ -258,6 +281,10 @@ footer a {
 
         width: 100%;
 
+    }
+
+    section .projetos-content{
+        width: 25%;
     }
 
 }
