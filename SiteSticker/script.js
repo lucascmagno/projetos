@@ -22,7 +22,7 @@ function draw() {
   } else {
     image(selfieImage, 0, 0);
     for (let sticker of stickers) {
-      image(sticker.img, sticker.x, sticker.y, 50, 50);
+      image(sticker.img, sticker.x, sticker.y, 60, 60);
     }
   }
 }
@@ -36,8 +36,8 @@ function addSticker(stickerSrc) {
   loadImage(stickerSrc, img => {
     stickers.push({
       img: img,
-      x: random(width - 50),
-      y: random(height - 50)
+      x: random(width - 60),
+      y: random(height - 60)
     });
   });
 }
@@ -49,12 +49,12 @@ function downloadImage() {
   let finalImage = createGraphics(640, 520);
   finalImage.image(selfieImage, 0, 0);
   for (let sticker of stickers) {
-    finalImage.image(sticker.img, sticker.x, sticker.y, 50, 50);
+    finalImage.image(sticker.img, sticker.x, sticker.y, 60, 60);
   }
   finalImage.fill(255);
   finalImage.textSize(16);
   finalImage.textAlign(CENTER);
   finalImage.text(footerText, width / 2, height + 20);
   
-  save(finalImage, 'selfie_com_sticker.jpg');
+  save(finalImage, 'selfie_com_emoji.jpg');
 }
