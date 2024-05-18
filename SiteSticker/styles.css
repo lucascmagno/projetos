@@ -1,33 +1,72 @@
 body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    margin: 20px auto;
-    width: 80%;
-  }
-  
-  #camera-container, #selfie-container {
-    position: relative;
-    display: inline-block;
-  }
-  
-  .stickers {
-    margin-top: 20px;
-  }
-  
-  .sticker {
-    width: 50px;
-    cursor: pointer;
-  }
-  
-  #download {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 16px;
-  }
-  
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+#camera-container, #selfie-container {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.stickers {
+  margin-top: 20px;
+}
+
+.stickers h2 {
+  font-size: 1.5em;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.sticker-list {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.sticker {
+  width: 60px;
+  height: 60px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.sticker:hover {
+  transform: scale(1.2);
+}
