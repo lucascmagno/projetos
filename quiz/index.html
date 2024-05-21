@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Game</title>
+    <title>Quiz de Arquitetura de Computadores</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div id="quiz-container">
-        <button id="start-btn" class="btn">Start</button>
+        <div id="header">
+            <h1>Quiz de Arquitetura de Computadores</h1>
+            <p>Bem-vindo ao quiz de arquitetura de computadores! Teste seus conhecimentos respondendo as perguntas abaixo.</p>
+        </div>
+        <div id="greeting" class="hidden">
+            <p>Olá, <span id="player-greeting"></span>!</p>
+        </div>
         <div id="question-container" class="hidden">
             <div id="question">Question text</div>
             <div id="answer-buttons" class="btn-container">
@@ -19,6 +25,7 @@
             <p id="question-counter">Respondidas: 0</p>
             <p id="questions-left">Faltam: 0</p>
         </div>
+        <button id="start-btn" class="btn">Começar</button>
         <button id="next-btn" class="btn hidden">Next</button>
         <div id="result-container" class="hidden">
             <p id="result-text"></p>

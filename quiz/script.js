@@ -2,6 +2,8 @@
 const startButton = document.getElementById('start-btn');
 const nextButton = document.getElementById('next-btn');
 const restartButton = document.getElementById('restart-btn');
+const greetingElement = document.getElementById('greeting');
+const playerGreetingElement = document.getElementById('player-greeting');
 const questionContainerElement = document.getElementById('question-container');
 const questionElement = document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons');
@@ -12,48 +14,43 @@ const questionsLeftElement = document.getElementById('questions-left');
 const counterContainerElement = document.getElementById('counter-container');
 
 let shuffledQuestions, currentQuestionIndex, correctAnswers;
+let playerName = '';
 
 const questions = [
     {
-        question: 'Qual é a capital da França?',
+        question: 'O que é uma memória?',
         answers: [
-            { text: 'Paris', correct: true },
-            { text: 'Londres', correct: false },
-            { text: 'Berlim', correct: false },
-            { text: 'Madrid', correct: false }
+            { text: 'Armazenamento de dados', correct: true },
+            { text: 'Unidade de processamento', correct: false },
+            { text: 'Dispositivo de entrada', correct: false },
+            { text: 'Dispositivo de saída', correct: false }
         ]
     },
     {
-        question: 'Quem pintou a Mona Lisa?',
+        question: 'Em quantos segundos é processado um dado?',
         answers: [
-            { text: 'Leonardo da Vinci', correct: true },
-            { text: 'Vincent Van Gogh', correct: false },
-            { text: 'Pablo Picasso', correct: false },
-            { text: 'Claude Monet', correct: false }
+            { text: 'Depende do processador', correct: true },
+            { text: '1 segundo', correct: false },
+            { text: '10 segundos', correct: false },
+            { text: '100 milissegundos', correct: false }
         ]
     },
     {
-        question: 'Qual é o maior planeta do nosso sistema solar?',
+        question: 'Cite exemplos de memória primária.',
         answers: [
-            { text: 'Júpiter', correct: true },
-            { text: 'Saturno', correct: false },
-            { text: 'Urano', correct: false },
-            { text: 'Netuno', correct: false }
+            { text: 'RAM (Memória de Acesso Aleatório)', correct: true },
+            { text: 'ROM (Memória Somente de Leitura)', correct: true },
+            { text: 'Cache', correct: false },
+            { text: 'HD (Disco Rígido)', correct: false }
         ]
     },
-    {
-        question: 'Em que ano o homem pisou na Lua pela primeira vez?',
-        answers: [
-            { text: '1969', correct: true },
-            { text: '1959', correct: false },
-            { text: '1979', correct: false },
-            { text: '1989', correct: false }
-        ]
-    }
     // Adicione mais perguntas conforme necessário
 ];
 
-startButton.addEventListener('click', startGame);
+startButton.addEventListener('click', () => {
+    startGame();
+});
+
 nextButton.addEventListener('click', () => {
     if (shuffledQuestions.length > currentQuestionIndex + 1) {
         currentQuestionIndex++;
@@ -62,7 +59,10 @@ nextButton.addEventListener('click', () => {
         showResult();
     }
 });
-restartButton.addEventListener('click', startGame);
+
+restartButton.addEventListener('click', () => {
+    startGame();
+});
 
 function startGame() {
     startButton.classList.add('hidden');
@@ -124,14 +124,14 @@ function selectAnswer(e) {
 }
 
 function updateCounter() {
-    questionCounterElement.innerText = `Respondidas: ${currentQuestionIndex}`;
+    questionCounterElement.innerText = `Respondidas: ${currentQuestionIndex + 1}`;
     questionsLeftElement.innerText = `Faltam: ${shuffledQuestions.length - currentQuestionIndex - 1}`;
 }
 
 function showResult() {
     questionContainerElement.classList.add('hidden');
     resultContainerElement.classList.remove('hidden');
-    resultTextElement.innerText = `Você acertou ${correctAnswers} de ${questions.length} perguntas!`;
+    resultTextElement.innerText = `Parabéns! Você acertou ${correctAnswers} de ${questions.length} perguntas!`;
     restartButton.classList.remove('hidden');
     counterContainerElement.classList.add('hidden');
     nextButton.classList.add('hidden');
