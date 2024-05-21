@@ -202,6 +202,7 @@ function showResult() {
     restartButton.classList.remove('hidden');
     counterContainerElement.classList.add('hidden');
     nextButton.classList.add('hidden');
+    
 }
 
 function setStatusClass(element, correct) {
