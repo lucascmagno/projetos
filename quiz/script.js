@@ -44,7 +44,70 @@ const questions = [
             { text: 'HD (Disco Rígido)', correct: false }
         ]
     },
-    // Adicione mais perguntas conforme necessário
+    {
+        question: 'Cite exemplos de memória secundária.',
+        answers: [
+            { text: 'HD (Disco Rígido)', correct: true },
+            { text: 'RAM (Memória de Acesso Aleatório)', correct: false },
+            { text: 'ROM (Memória Somente de Leitura)', correct: false },
+            { text: 'Cache', correct: false }
+        ]
+    },
+    {
+        question: 'Quais dos modos de Endereçamento de Instruções está errado?',
+        answers: [
+            { text: 'Imediato', correct: false },
+            { text: 'Direto', correct: false },
+            { text: 'Indireto', correct: false },
+            { text: 'Por registrador', correct: false },
+            { text: 'Condicional', correct: true }
+        ]
+    },
+    {
+        question: 'O que é um Registrador?',
+        answers: [
+            { text: 'Armazena dados temporários dentro do processador', correct: true },
+            { text: 'Dispositivo de entrada', correct: false },
+            { text: 'Dispositivo de saída', correct: false },
+            { text: 'Unidade de processamento', correct: false }
+        ]
+    },
+    {
+        question: 'O que é Memória Cache?',
+        answers: [
+            { text: 'Memória de alta velocidade entre a CPU e a RAM', correct: true },
+            { text: 'Memória ROM', correct: false },
+            { text: 'Memória virtual', correct: false },
+            { text: 'Disco rígido', correct: false }
+        ]
+    },
+    {
+        question: 'Como a memória Cache funciona?',
+        answers: [
+            { text: 'Armazena dados frequentemente acessados para acesso rápido', correct: true },
+            { text: 'Armazena dados permanentes', correct: false },
+            { text: 'Executa cálculos matemáticos', correct: false },
+            { text: 'Realiza operações de entrada e saída', correct: false }
+        ]
+    },
+    {
+        question: 'Como o Cache substitui os dados quando ele fica cheio?',
+        answers: [
+            { text: 'Usa algoritmos de substituição, como LRU (Menos Recente Utilizado)', correct: true },
+            { text: 'Elimina todos os dados antigos', correct: false },
+            { text: 'Sobrescreve os dados manualmente', correct: false },
+            { text: 'Envia os dados para a RAM', correct: false }
+        ]
+    },
+    {
+        question: 'Como optar por qual via de Cache a ser excluída para uma nova substituição?',
+        answers: [
+            { text: 'Usa algoritmos de substituição, como LRU (Menos Recente Utilizado)', correct: true },
+            { text: 'Exclui a via mais cheia', correct: false },
+            { text: 'Escolhe aleatoriamente', correct: false },
+            { text: 'Exclui a via mais vazia', correct: false }
+        ]
+    }
 ];
 
 startButton.addEventListener('click', () => {
@@ -56,7 +119,11 @@ nextButton.addEventListener('click', () => {
         currentQuestionIndex++;
         setNextQuestion();
     } else {
-        showResult();
+        if (currentQuestionIndex === questions.length - 1) {
+            showResult();
+        } else {
+            alert('Por favor, responda todas as perguntas.');
+        }
     }
 });
 
