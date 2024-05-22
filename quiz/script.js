@@ -29,16 +29,16 @@ const questions = [
     {
         question: 'Em quantos segundos é processado um dado?',
         answers: [
-            { text: 'Depende do processador', correct: true },
             { text: '1 segundo', correct: false },
             { text: '10 segundos', correct: false },
-            { text: '100 milissegundos', correct: false }
+            { text: '100 milissegundos', correct: false },
+            { text: 'Depende do processador', correct: true }
         ]
     },
     {
         question: 'Cite exemplos de memória primária.',
         answers: [
-            { text: 'RAM (Memória de Acesso Aleatório)', correct: true },
+            { text: 'SSD', correct: false },
             { text: 'ROM (Memória Somente de Leitura)', correct: true },
             { text: 'Cache', correct: false },
             { text: 'HD (Disco Rígido)', correct: false }
@@ -47,9 +47,9 @@ const questions = [
     {
         question: 'Cite exemplos de memória secundária.',
         answers: [
-            { text: 'HD (Disco Rígido)', correct: true },
             { text: 'RAM (Memória de Acesso Aleatório)', correct: false },
             { text: 'ROM (Memória Somente de Leitura)', correct: false },
+            { text: 'HD (Disco Rígido)', correct: true },
             { text: 'Cache', correct: false }
         ]
     },
@@ -75,19 +75,19 @@ const questions = [
     {
         question: 'O que é Memória Cache?',
         answers: [
-            { text: 'Memória de alta velocidade entre a CPU e a RAM', correct: true },
             { text: 'Memória ROM', correct: false },
             { text: 'Memória virtual', correct: false },
+            { text: 'Memória de alta velocidade entre a CPU e a RAM', correct: true },
             { text: 'Disco rígido', correct: false }
         ]
     },
     {
         question: 'Como a memória Cache funciona?',
         answers: [
-            { text: 'Armazena dados frequentemente acessados para acesso rápido', correct: true },
             { text: 'Armazena dados permanentes', correct: false },
             { text: 'Executa cálculos matemáticos', correct: false },
             { text: 'Realiza operações de entrada e saída', correct: false }
+            { text: 'Armazena dados frequentemente acessados para acesso rápido', correct: true },
         ]
     },
     {
@@ -102,9 +102,9 @@ const questions = [
     {
         question: 'Como optar por qual via de Cache a ser excluída para uma nova substituição?',
         answers: [
-            { text: 'Usa algoritmos de substituição, como LRU (Menos Recente Utilizado)', correct: true },
             { text: 'Exclui a via mais cheia', correct: false },
             { text: 'Escolhe aleatoriamente', correct: false },
+            { text: 'Usa algoritmos de substituição, como LRU (Menos Recente Utilizado)', correct: true },
             { text: 'Exclui a via mais vazia', correct: false }
         ]
     }
