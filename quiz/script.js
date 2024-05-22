@@ -86,8 +86,8 @@ const questions = [
         answers: [
             { text: 'Armazena dados permanentes', correct: false },
             { text: 'Executa cálculos matemáticos', correct: false },
-            { text: 'Realiza operações de entrada e saída', correct: false }
-            { text: 'Armazena dados frequentemente acessados para acesso rápido', correct: true },
+            { text: 'Realiza operações de entrada e saída', correct: false },
+            { text: 'Armazena dados frequentemente acessados para acesso rápido', correct: true }
         ]
     },
     {
