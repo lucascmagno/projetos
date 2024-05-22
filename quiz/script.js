@@ -1,9 +1,6 @@
-// script.js
 const startButton = document.getElementById('start-btn');
 const nextButton = document.getElementById('next-btn');
 const restartButton = document.getElementById('restart-btn');
-const greetingElement = document.getElementById('greeting');
-const playerGreetingElement = document.getElementById('player-greeting');
 const questionContainerElement = document.getElementById('question-container');
 const questionElement = document.getElementById('question');
 const answerButtonsElement = document.getElementById('answer-buttons');
@@ -12,9 +9,15 @@ const resultTextElement = document.getElementById('result-text');
 const questionCounterElement = document.getElementById('question-counter');
 const questionsLeftElement = document.getElementById('questions-left');
 const counterContainerElement = document.getElementById('counter-container');
+const answersWithExplanationElement = document.getElementById('answers-with-explanation');
+const scoreboardElement = document.getElementById('scoreboard');
+const playerInputs = document.getElementById('player-inputs');
+const currentPlayerContainer = document.getElementById('current-player-container');
+const currentPlayerElement = document.getElementById('current-player');
 
-let shuffledQuestions, currentQuestionIndex, correctAnswers;
-let playerName = '';
+let shuffledQuestions, currentQuestionIndex, currentPlayerIndex;
+let players = [];
+let scores = [0, 0, 0];
 
 const questions = [
     {
@@ -110,43 +113,44 @@ const questions = [
     }
 ];
 
-startButton.addEventListener('click', () => {
-    startGame();
-});
-
+startButton.addEventListener('click', startGame);
 nextButton.addEventListener('click', () => {
-    if (shuffledQuestions.length > currentQuestionIndex + 1) {
-        currentQuestionIndex++;
-        setNextQuestion();
+    currentQuestionIndex++;
+    if (currentQuestionIndex >= questions.length) {
+        currentPlayerIndex++;
+        currentQuestionIndex = 0;
+    }
+    if (currentPlayerIndex >= players.length) {
+        showResult();
     } else {
-        if (currentQuestionIndex === questions.length - 1) {
-            showResult();
-        } else {
-            alert('Por favor, responda todas as perguntas.');
-        }
+        setNextQuestion();
     }
 });
-
-restartButton.addEventListener('click', () => {
-    startGame();
-});
+restartButton.addEventListener('click', restartGame);
 
 function startGame() {
+    const playerNames = document.querySelectorAll('.player-name');
+    players = Array.from(playerNames).map(input => input.value);
+    if (players.some(name => name.trim() === '')) {
+        alert('Por favor, insira o nome de todos os jogadores.');
+        return;
+    }
     startButton.classList.add('hidden');
-    resultContainerElement.classList.add('hidden');
+    playerInputs.classList.add('hidden');
+    currentPlayerContainer.classList.remove('hidden');
     questionContainerElement.classList.remove('hidden');
     counterContainerElement.classList.remove('hidden');
-    nextButton.classList.remove('hidden');
-    shuffledQuestions = questions.sort(() => Math.random() - 0.5);
     currentQuestionIndex = 0;
-    correctAnswers = 0;
-    updateCounter();
+    currentPlayerIndex = 0;
+    scores = Array(players.length).fill(0);
     setNextQuestion();
 }
 
 function setNextQuestion() {
     resetState();
-    showQuestion(shuffledQuestions[currentQuestionIndex]);
+    showQuestion(questions[currentQuestionIndex]);
+    updateCounters();
+    updateCurrentPlayer();
 }
 
 function showQuestion(question) {
@@ -161,7 +165,6 @@ function showQuestion(question) {
         button.addEventListener('click', selectAnswer);
         answerButtonsElement.appendChild(button);
     });
-    updateCounter();
 }
 
 function resetState() {
@@ -174,35 +177,16 @@ function resetState() {
 
 function selectAnswer(e) {
     const selectedButton = e.target;
-    const correct = selectedButton.dataset.correct === 'true';
+    const correct = selectedButton.dataset.correct;
+    setStatusClass(selectedButton, correct);
     if (correct) {
-        correctAnswers++;
+        scores[currentPlayerIndex]++;
     }
-    setStatusClass(document.body, correct);
     Array.from(answerButtonsElement.children).forEach(button => {
-        setStatusClass(button, button.dataset.correct === 'true');
+        setStatusClass(button, button.dataset.correct);
+        button.disabled = true;
     });
     nextButton.classList.remove('hidden');
-    if (shuffledQuestions.length <= currentQuestionIndex + 1) {
-        nextButton.innerText = 'Show Results';
-    } else {
-        nextButton.innerText = 'Next';
-    }
-}
-
-function updateCounter() {
-    questionCounterElement.innerText = `Respondidas: ${currentQuestionIndex + 1}`;
-    questionsLeftElement.innerText = `Faltam: ${shuffledQuestions.length - currentQuestionIndex - 1}`;
-}
-
-function showResult() {
-    questionContainerElement.classList.add('hidden');
-    resultContainerElement.classList.remove('hidden');
-    resultTextElement.innerText = `Parabéns! Você acertou ${correctAnswers} de ${questions.length} perguntas!`;
-    restartButton.classList.remove('hidden');
-    counterContainerElement.classList.add('hidden');
-    nextButton.classList.add('hidden');
-    
 }
 
 function setStatusClass(element, correct) {
@@ -217,4 +201,59 @@ function setStatusClass(element, correct) {
 function clearStatusClass(element) {
     element.classList.remove('correct');
     element.classList.remove('wrong');
+}
+
+function updateCounters() {
+    questionCounterElement.innerText = `Respondidas: ${currentQuestionIndex + 1}`;
+    questionsLeftElement.innerText = `Faltam: ${questions.length - (currentQuestionIndex + 1)}`;
+}
+
+function updateCurrentPlayer() {
+    currentPlayerElement.innerText = `Vez de: ${players[currentPlayerIndex]}`;
+}
+
+function showResult() {
+    questionContainerElement.classList.add('hidden');
+    resultContainerElement.classList.remove('hidden');
+    counterContainerElement.classList.add('hidden');
+    nextButton.classList.add('hidden');
+    resultTextElement.innerText = `Parabéns! Você completou o quiz. Veja abaixo o placar:`;
+    showScoreboard();
+}
+
+function showScoreboard() {
+    scoreboardElement.innerHTML = '';
+    players.forEach((player, index) => {
+        const playerScore = document.createElement('p');
+        playerScore.innerText = `${player}: ${scores[index]} pontos`;
+        scoreboardElement.appendChild(playerScore);
+    });
+    showAnswersWithExplanation();
+}
+
+function restartGame() {
+    resultContainerElement.classList.add('hidden');
+    playerInputs.classList.remove('hidden');
+    startButton.classList.remove('hidden');
+    answersWithExplanationElement.classList.add('hidden');
+}
+
+function showAnswersWithExplanation() {
+    answersWithExplanationElement.innerHTML = '';
+    questions.forEach((question, index) => {
+        const questionDiv = document.createElement('div');
+        questionDiv.classList.add('question-with-explanation');
+
+        const questionHeader = document.createElement('h3');
+        questionHeader.innerText = `Pergunta ${index + 1}: ${question.question}`;
+
+        const explanationParagraph = document.createElement('p');
+        const correctAnswer = question.answers.find(answer => answer.correct);
+        explanationParagraph.innerText = `Resposta correta: ${correctAnswer.text}`;
+
+        questionDiv.appendChild(questionHeader);
+        questionDiv.appendChild(explanationParagraph);
+        answersWithExplanationElement.appendChild(questionDiv);
+    });
+    answersWithExplanationElement.classList.remove('hidden');
 }

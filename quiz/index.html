@@ -7,13 +7,22 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="header">
-        <h1>Quiz de Arquitetura de Computadores</h1>
-        <p>Bem-vindo ao quiz de arquitetura de computadores! Teste seus conhecimentos respondendo as perguntas abaixo.</p>
-    </div>
     <div id="quiz-container">
-        <div id="greeting" class="hidden">
-            <p>Olá, <span id="player-greeting"></span>!</p>
+        <div id="header">
+            <h1>Quiz de Arquitetura de Computadores</h1>
+            <p>Bem-vindo ao quiz de arquitetura de computadores! Teste seus conhecimentos respondendo as perguntas abaixo.</p>
+        </div>
+        <div id="player-inputs">
+            <label for="player1">Jogador 1:</label>
+            <input type="text" id="player1" class="player-name"><br>
+            <label for="player2">Jogador 2:</label>
+            <input type="text" id="player2" class="player-name"><br>
+            <label for="player3">Jogador 3:</label>
+            <input type="text" id="player3" class="player-name"><br>
+            <button id="start-btn" class="btn">Começar</button>
+        </div>
+        <div id="current-player-container" class="hidden">
+            <h2 id="current-player">Vez de: Jogador</h2>
         </div>
         <div id="question-container" class="hidden">
             <div id="question">Question text</div>
@@ -25,11 +34,14 @@
             <p id="question-counter">Respondidas: 0</p>
             <p id="questions-left">Faltam: 0</p>
         </div>
-        <button id="start-btn" class="btn">Começar</button>
         <button id="next-btn" class="btn hidden">Next</button>
         <div id="result-container" class="hidden">
             <p id="result-text"></p>
+            <div id="scoreboard"></div>
             <button id="restart-btn" class="btn">Restart</button>
+        </div>
+        <div id="answers-with-explanation" class="hidden">
+            <!-- As perguntas e explicações serão adicionadas dinamicamente pelo JavaScript -->
         </div>
     </div>
     <script src="script.js"></script>
