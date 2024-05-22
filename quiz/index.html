@@ -10,15 +10,34 @@
     <div id="quiz-container">
         <div id="header">
             <h1>Quiz de Arquitetura de Computadores</h1>
-            <p>Bem-vindo ao quiz de arquitetura de computadores! Teste seus conhecimentos respondendo as perguntas abaixo.</p>
+            <p>Bem-vindo ao quiz de arquitetura de computadores! Teste seus conhecimentos respondendo às perguntas abaixo.</p>
         </div>
-        <div id="player-inputs">
-            <label for="player1">Jogador 1:</label>
-            <input type="text" id="player1" class="player-name"><br>
-            <label for="player2">Jogador 2:</label>
-            <input type="text" id="player2" class="player-name"><br>
-            <label for="player3">Jogador 3:</label>
-            <input type="text" id="player3" class="player-name"><br>
+        <div id="player-selection">
+            <label for="num-players">Selecione o número de jogadores:</label>
+            <select id="num-players" class="btn">
+                <option value="1">1 Jogador</option>
+                <option value="2">2 Jogadores</option>
+                <option value="3">3 Jogadores</option>
+                <option value="4">4 Jogadores</option>
+            </select>
+            <div id="player-inputs">
+                <div class="player-input hidden" id="player1-container">
+                    <label for="player1">Jogador 1:</label>
+                    <input type="text" id="player1" class="player-name">
+                </div>
+                <div class="player-input hidden" id="player2-container">
+                    <label for="player2">Jogador 2:</label>
+                    <input type="text" id="player2" class="player-name">
+                </div>
+                <div class="player-input hidden" id="player3-container">
+                    <label for="player3">Jogador 3:</label>
+                    <input type="text" id="player3" class="player-name">
+                </div>
+                <div class="player-input hidden" id="player4-container">
+                    <label for="player4">Jogador 4:</label>
+                    <input type="text" id="player4" class="player-name">
+                </div>
+            </div>
             <button id="start-btn" class="btn">Começar</button>
         </div>
         <div id="current-player-container" class="hidden">
@@ -34,11 +53,11 @@
             <p id="question-counter">Respondidas: 0</p>
             <p id="questions-left">Faltam: 0</p>
         </div>
-        <button id="next-btn" class="btn hidden">Next</button>
+        <button id="next-btn" class="btn hidden">Próxima</button>
         <div id="result-container" class="hidden">
             <p id="result-text"></p>
             <div id="scoreboard"></div>
-            <button id="restart-btn" class="btn">Restart</button>
+            <button id="restart-btn" class="btn">Reiniciar</button>
         </div>
         <div id="answers-with-explanation" class="hidden">
             <!-- As perguntas e explicações serão adicionadas dinamicamente pelo JavaScript -->

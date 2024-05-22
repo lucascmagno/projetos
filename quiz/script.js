@@ -14,10 +14,12 @@ const scoreboardElement = document.getElementById('scoreboard');
 const playerInputs = document.getElementById('player-inputs');
 const currentPlayerContainer = document.getElementById('current-player-container');
 const currentPlayerElement = document.getElementById('current-player');
+const numPlayersSelect = document.getElementById('num-players');
 
 let shuffledQuestions, currentQuestionIndex, currentPlayerIndex;
 let players = [];
-let scores = [0, 0, 0];
+let scores = [];
+let totalQuestionsAnswered = 0;
 
 const questions = [
     {
@@ -113,14 +115,16 @@ const questions = [
     }
 ];
 
+numPlayersSelect.addEventListener('change', handlePlayerSelection);
 startButton.addEventListener('click', startGame);
 nextButton.addEventListener('click', () => {
     currentQuestionIndex++;
+    totalQuestionsAnswered++;
     if (currentQuestionIndex >= questions.length) {
         currentPlayerIndex++;
         currentQuestionIndex = 0;
     }
-    if (currentPlayerIndex >= players.length) {
+    if (totalQuestionsAnswered >= questions.length * players.length) {
         showResult();
     } else {
         setNextQuestion();
@@ -128,21 +132,38 @@ nextButton.addEventListener('click', () => {
 });
 restartButton.addEventListener('click', restartGame);
 
-function startGame() {
-    const playerNames = document.querySelectorAll('.player-name');
-    players = Array.from(playerNames).map(input => input.value);
-    if (players.some(name => name.trim() === '')) {
-        alert('Por favor, insira o nome de todos os jogadores.');
-        return;
+function handlePlayerSelection() {
+    const numPlayers = parseInt(numPlayersSelect.value);
+    for (let i = 1; i <= 4; i++) {
+        const playerContainer = document.getElementById(`player${i}-container`);
+        if (i <= numPlayers) {
+            playerContainer.classList.remove('hidden');
+        } else {
+            playerContainer.classList.add('hidden');
+        }
     }
+}
+
+function startGame() {
+    const numPlayers = parseInt(numPlayersSelect.value);
+    players = [];
+    for (let i = 1; i <= numPlayers; i++) {
+        const playerName = document.getElementById(`player${i}`).value.trim();
+        if (playerName === '') {
+            alert(`Por favor, insira o nome do Jogador ${i}.`);
+            return;
+        }
+        players.push(playerName);
+    }
+    scores = Array(players.length).fill(0);
+    totalQuestionsAnswered = 0;
+    currentPlayerIndex = 0;
+    currentQuestionIndex = 0;
     startButton.classList.add('hidden');
     playerInputs.classList.add('hidden');
     currentPlayerContainer.classList.remove('hidden');
     questionContainerElement.classList.remove('hidden');
     counterContainerElement.classList.remove('hidden');
-    currentQuestionIndex = 0;
-    currentPlayerIndex = 0;
-    scores = Array(players.length).fill(0);
     setNextQuestion();
 }
 
@@ -219,41 +240,66 @@ function showResult() {
     nextButton.classList.add('hidden');
     resultTextElement.innerText = `Parabéns! Você completou o quiz. Veja abaixo o placar:`;
     showScoreboard();
+    showAnswersWithExplanation();
 }
 
 function showScoreboard() {
     scoreboardElement.innerHTML = '';
     players.forEach((player, index) => {
         const playerScore = document.createElement('p');
-        playerScore.innerText = `${player}: ${scores[index]} pontos`;
+        playerScore.innerText = `${player}: ${scores[index]} ponto(s)`;
         scoreboardElement.appendChild(playerScore);
     });
-    showAnswersWithExplanation();
+}
+
+function showAnswersWithExplanation() {
+    answersWithExplanationElement.classList.remove('hidden');
+    questions.forEach((question, index) => {
+        const questionWithExplanation = document.createElement('div');
+        questionWithExplanation.classList.add('question-with-explanation');
+        const questionTitle = document.createElement('h3');
+        questionTitle.innerText = `Pergunta ${index + 1}: ${question.question}`;
+        questionWithExplanation.appendChild(questionTitle);
+        const correctAnswer = question.answers.find(answer => answer.correct);
+        const explanation = document.createElement('p');
+        explanation.innerText = `Resposta Correta: ${correctAnswer.text}`;
+        questionWithExplanation.appendChild(explanation);
+        answersWithExplanationElement.appendChild(questionWithExplanation);
+    });
 }
 
 function restartGame() {
     resultContainerElement.classList.add('hidden');
-    playerInputs.classList.remove('hidden');
     startButton.classList.remove('hidden');
+    playerInputs.classList.remove('hidden');
+    currentPlayerContainer.classList.add('hidden');
+    questionCounterElement.innerText = 'Respondidas: 0';
+    questionsLeftElement.innerText = `Faltam: ${questions.length}`;
+}
+
+function shuffle(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]]
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+
+function restartGame() {
+    resultContainerElement.classList.add('hidden');
     answersWithExplanationElement.classList.add('hidden');
+    startButton.classList.remove('hidden');
+    playerInputs.classList.remove('hidden');
+    currentPlayerContainer.classList.add('hidden');
+    questionCounterElement.innerText = 'Respondidas: 0';
+    questionsLeftElement.innerText = `Faltam: ${questions.length}`;
+    shuffledQuestions = shuffle(questions);
 }
 
-function showAnswersWithExplanation() {
-    answersWithExplanationElement.innerHTML = '';
-    questions.forEach((question, index) => {
-        const questionDiv = document.createElement('div');
-        questionDiv.classList.add('question-with-explanation');
-
-        const questionHeader = document.createElement('h3');
-        questionHeader.innerText = `Pergunta ${index + 1}: ${question.question}`;
-
-        const explanationParagraph = document.createElement('p');
-        const correctAnswer = question.answers.find(answer => answer.correct);
-        explanationParagraph.innerText = `Resposta correta: ${correctAnswer.text}`;
-
-        questionDiv.appendChild(questionHeader);
-        questionDiv.appendChild(explanationParagraph);
-        answersWithExplanationElement.appendChild(questionDiv);
-    });
-    answersWithExplanationElement.classList.remove('hidden');
+function initializeGame() {
+    handlePlayerSelection();
+    restartGame();
 }
+
+initializeGame();

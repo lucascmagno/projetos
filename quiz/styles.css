@@ -38,6 +38,30 @@ body {
     font-size: 1em;
 }
 
+#player-selection {
+    margin: 20px 0;
+}
+
+#player-selection label {
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+#num-players {
+    padding: 10px;
+    border: 2px solid #1abc9c;
+    border-radius: 5px;
+    background-color: #16a085;
+    color: #ecf0f1;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+#num-players option {
+    background-color: #34495e;
+    color: #ecf0f1;
+}
+
 .btn {
     display: inline-block;
     padding: 10px 20px;
