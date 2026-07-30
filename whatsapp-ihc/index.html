@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Protótipo - WhatsApp Acessível</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+
+background:#ece5dd;
+display:flex;
+justify-content:center;
+align-items:center;
+min-height:100vh;
+padding:30px;
+
+}
+
+.phone{
+
+width:390px;
+background:white;
+border-radius:25px;
+overflow:hidden;
+box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+}
+
+.header{
+
+background:#075E54;
+color:white;
+padding:18px;
+
+}
+
+.header h1{
+
+font-size:24px;
+
+}
+
+.search{
+
+padding:18px;
+background:#fafafa;
+
+}
+
+.search input{
+
+width:100%;
+padding:13px;
+font-size:16px;
+border-radius:10px;
+border:1px solid #CCC;
+
+}
+
+.section{
+
+padding:15px;
+
+}
+
+.item{
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+background:#f5f5f5;
+
+padding:18px;
+
+margin-bottom:12px;
+
+border-radius:12px;
+
+cursor:pointer;
+
+transition:.3s;
+
+font-size:18px;
+
+}
+
+.item:hover{
+
+background:#DCF8C6;
+
+transform:scale(1.02);
+
+}
+
+.subtitle{
+
+padding:15px;
+
+font-size:15px;
+
+font-weight:bold;
+
+color:#555;
+
+}
+
+button{
+
+padding:10px 18px;
+
+border:none;
+
+background:#128C7E;
+
+color:white;
+
+border-radius:8px;
+
+cursor:pointer;
+
+font-size:15px;
+
+margin-top:10px;
+
+}
+
+button:hover{
+
+background:#0d6f64;
+
+}
+
+.footer{
+
+padding:20px;
+
+text-align:center;
+
+font-size:13px;
+
+color:#666;
+
+background:#fafafa;
+
+}
+
+.highContrast{
+
+background:black!important;
+
+color:white!important;
+
+}
+
+.highContrast .item{
+
+background:#222;
+
+color:white;
+
+}
+
+.highContrast input{
+
+background:#000;
+
+color:white;
+
+border:2px solid yellow;
+
+}
+
+.highContrast .footer{
+
+background:#111;
+
+color:white;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="phone" id="phone">
+
+<div class="header">
+
+<h1>Configurações</h1>
+
+</div>
+
+<div class="search">
+
+<input
+id="pesquisa"
+placeholder="Pesquisar configuração...">
+
+</div>
+
+<div class="subtitle">
+
+CONFIGURAÇÕES
+
+</div>
+
+<div class="section">
+
+<div class="item">👤 Conta <span>></span></div>
+
+<div class="item">🔒 Privacidade <span>></span></div>
+
+<div class="item">💬 Conversas <span>></span></div>
+
+<div class="item">🔔 Notificações <span>></span></div>
+
+<div class="item">💾 Armazenamento <span>></span></div>
+
+<div class="item">🌐 Idioma <span>></span></div>
+
+<div class="item">♿ Acessibilidade <span>></span></div>
+
+</div>
+
+<div class="subtitle">
+
+RECURSOS DE ACESSIBILIDADE
+
+</div>
+
+<div class="section">
+
+<button onclick="aumentarFonte()">
+
+Aumentar Fonte
+
+</button>
+
+<button onclick="diminuirFonte()">
+
+Diminuir Fonte
+
+</button>
+
+<button onclick="altoContraste()">
+
+Modo Alto Contraste
+
+</button>
+
+</div>
+
+<div class="footer">
+
+Protótipo desenvolvido para avaliação de Interação Humano-Computador (IHC)<br>
+
+Universidade Federal Rural da Amazônia
+
+</div>
+
+</div>
+
+<script>
+
+let tamanho=18;
+
+function aumentarFonte(){
+
+tamanho+=2;
+
+document.querySelectorAll('.item').forEach(item=>{
+
+item.style.fontSize=tamanho+'px';
+
+});
+
+}
+
+function diminuirFonte(){
+
+if(tamanho>14){
+
+tamanho-=2;
+
+document.querySelectorAll('.item').forEach(item=>{
+
+item.style.fontSize=tamanho+'px';
+
+});
+
+}
+
+}
+
+function altoContraste(){
+
+document.getElementById("phone").classList.toggle("highContrast");
+
+}
+
+document.getElementById("pesquisa").addEventListener("keyup",function(){
+
+let texto=this.value.toLowerCase();
+
+document.querySelectorAll(".item").forEach(function(item){
+
+if(item.innerText.toLowerCase().includes(texto)){
+
+item.style.display="flex";
+
+}else{
+
+item.style.display="none";
+
+}
+
+});
+
+});
+
+</script>
+
+</body>
+
+</html>
